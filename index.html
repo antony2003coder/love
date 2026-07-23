@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Chat de Relacionamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .chat-container { width: 350px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .chat-header { background: #ff4b6e; color: white; padding: 15px; text-align: center; font-weight: bold; }
+        .chat-messages { height: 300px; padding: 15px; overflow-y: auto; border-bottom: 1px solid #ddd; display: flex; flex-direction: column; gap: 10px; }
+        .message { padding: 8px 12px; border-radius: 15px; max-width: 70%; font-size: 14px; }
+        .sent { background: #ff4b6e; color: white; align-self: flex-end; }
+        .received { background: #e4e6eb; color: black; align-self: flex-start; }
+        .chat-input { display: flex; padding: 10px; }
+        .chat-input input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 20px; outline: none; }
+        .chat-input button { background: #ff4b6e; color: white; border: none; padding: 10px 15px; margin-left: 5px; border-radius: 50%; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">❤️ Match Chat</div>
+    <div class="chat-messages" id="chatBox">
+        <div class="message received">Olá! Gostei do teu perfil. 😊</div>
+        <div class="message sent">Olá! Obrigado, também gostei do teu!</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Escreve uma mensagem...">
+        <button onclick="enviarMensagem()">➔</button>
+    </div>
+</div>
+
+<script>
+    function enviarMensagem() {
+        const input = document.getElementById('messageInput');
+        const chatBox = document.getElementById('chatBox');
+        
+        if (input.value.trim() !== "") {
+            // Criar o balão da nova mensagem
+            const novaMensagem = document.createElement('div');
+            novaMensagem.className = 'message sent';
+            novaMensagem.innerText = input.value;
+            
+            // Adicionar ao chat e limpar o campo
+            chatBox.appendChild(novaMensagem);
+            input.value = "";
+            
+            // Rolar o chat para baixo automaticamente
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    }
+</script>
+
+</body>
+</html>
+
