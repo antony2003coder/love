@@ -107,7 +107,20 @@
 </div>
 
 <script>
-    // Dados de simulação
+        // Lógica 1: Salvar Perfil (CORRIGIDO)
+    function salvarPerfil() {
+        const nome = document.getElementById('userName').value.trim();
+        const idade = document.getElementById('userAge').value.trim();
+        
+        // Corrigido de 'input' para 'idade'
+        if (nome === "" || idade === "") {
+            alert("Por favor, preenche o teu nome e idade!");
+            return;
+        }
+        meuPerfil = { nome, idade };
+        alternarEcra('screenDiscovery');
+    }
+    
     let meuPerfil = {};
     const candidatos = [
         { nome: "Ana", idade: 24, bio: "Adoro viajar, café e boa música de praia! ✈️☕", foto: "https://unsplash.com" },
